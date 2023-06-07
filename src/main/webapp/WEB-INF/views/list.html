@@ -20,10 +20,12 @@
       <td th:text="${customer.firstName}"></td>
       <td th:text="${customer.lastName}"></td>
       <td><a th:href="@{/{id}/edit(id=${customer.getId()})}" >Sửa</a>||
-        <a th:href="@{/{id}/delete(id=${customer.getId()})}" >Xóa</a>
+        <a th:href="@{/{id}/delete(id=${customer.getId()})}"  onclick="return confirm('Bạn có muốn xóa')" >Xóa</a>
       </td>
     </tr>
   </th:block>
 </table>
+
+
 </body>
 </html>

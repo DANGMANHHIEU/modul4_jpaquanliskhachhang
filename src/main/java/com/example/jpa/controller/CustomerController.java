@@ -65,19 +65,23 @@ public class CustomerController {
      @GetMapping("/{id}/delete")
     public ModelAndView showDelete(@PathVariable Long id){
         Customer customer = customerService.findById(id);
-        if(customer != null){
-            ModelAndView modelAndView= new ModelAndView("/delete");
-            modelAndView.addObject("customer",customer);
-            return modelAndView;
-        }else {
-            ModelAndView modelAndView = new ModelAndView("/erorr.404");
-            return modelAndView;
-        }
+//        if(customer != null){
+//            ModelAndView modelAndView= new ModelAndView("/delete");
+//            modelAndView.addObject("customer",customer);
+//            return modelAndView;
+//        }else {
+//            ModelAndView modelAndView = new ModelAndView("/erorr.404");
+//            return modelAndView;
+//        }
+
+         customerService.remove(customer.getId());
+         return new ModelAndView("redirect:/customer");
      }
-     @PostMapping("/delete-customer")
-    public ModelAndView delete(@ModelAttribute("customer") Customer customer){
-        customerService.remove(customer.getId());
-        return new ModelAndView("redirect:customer");
-     }
+
+//     @PostMapping("/delete-customer")
+//    public ModelAndView delete(@ModelAttribute("customer") Customer customer){
+//        customerService.remove(customer.getId());
+//        return new ModelAndView("redirect:customer");
+//     }
 
 }
