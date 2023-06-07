@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/create">Create new customer</a>
+<h1>Danh sách</h1>
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Thao tác</th>
+  </tr>
+  <th:block th:each="customer : ${list} " >
+    <tr>
+      <td th:text="${customer.id}"></td>
+      <td th:text="${customer.firstName}"></td>
+      <td th:text="${customer.lastName}"></td>
+      <td><a th:href="@{/{id}/edit(id=${customer.getId()})}" >Sửa</a>||
+        <a th:href="@{/{id}/delete(id=${customer.getId()})}" >Xóa</a>
+      </td>
+    </tr>
+  </th:block>
+</table>
+</body>
+</html>
